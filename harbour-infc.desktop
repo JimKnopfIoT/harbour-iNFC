@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=harbour-infc
+Exec=harbour-infc
+Name=iNFC
+Comment=NFC reader, writer and emulator
+
+[X-Sailjail]
+OrganizationName=org.infc
+ApplicationName=infc
+Permissions=NFC;Internet;UserDirs

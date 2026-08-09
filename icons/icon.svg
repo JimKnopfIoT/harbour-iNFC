@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- House style shared with harbour-sdcardmount: transparent background,
+     outline only, neon orange with a two stage glow. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="172" height="172" viewBox="0 0 172 172">
+  <defs>
+    <linearGradient id="orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#ffc266"/>
+      <stop offset="0.5" stop-color="#ff8a00"/>
+      <stop offset="1"   stop-color="#ff6a00"/>
+    </linearGradient>
+    <!-- neon glow -->
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="b1"/>
+      <feFlood flood-color="#ff7a00" flood-opacity="0.95" result="c1"/>
+      <feComposite in="c1" in2="b1" operator="in" result="g1"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="b2"/>
+      <feFlood flood-color="#ff5500" flood-opacity="0.7" result="c2"/>
+      <feComposite in="c2" in2="b2" operator="in" result="g2"/>
+      <feMerge>
+        <feMergeNode in="g2"/>
+        <feMergeNode in="g1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#glow)">
+    <!-- card body -->
+    <rect x="14" y="50" width="116" height="78" rx="9"
+          fill="none" stroke="url(#orange)" stroke-width="5"/>
+
+    <!-- antenna inlay, two turns following the card edge -->
+    <g fill="none" stroke="url(#orange)" stroke-width="3.5">
+      <rect x="24" y="60" width="96" height="58" rx="7"/>
+      <rect x="31" y="67" width="82" height="44" rx="6"/>
+    </g>
+
+    <!-- signal leaving the top right corner of the card -->
+    <g fill="none" stroke="url(#orange)" stroke-width="5" stroke-linecap="round">
+      <path d="M 132.7 38.6 A 18 18 0 0 1 145.9 54.4"/>
+      <path d="M 135.3 29.0 A 28 28 0 0 1 155.9 53.6"/>
+      <path d="M 137.8 19.3 A 38 38 0 0 1 165.9 52.7"/>
+    </g>
+
+    <!-- lettering -->
+    <text x="72" y="99" text-anchor="middle"
+          font-family="DejaVu Sans, Sans-serif" font-weight="bold"
+          font-size="30" letter-spacing="1"
+          fill="url(#orange)">NFC</text>
+  </g>
+</svg>
