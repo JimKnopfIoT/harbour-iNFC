@@ -82,11 +82,21 @@ The split is a single `CONFIG+=uv` switch in `harbour-infc.pro`: it changes the
 target, adds the Proxmark/sound sources, links libpulse, and installs the
 uv-only QML and assets. The base build carries none of it.
 
-## A note on the uv variant
+## Status & responsible use
 
-The Proxmark features are dual-use security-research tooling for your **own**
-hardware and cards (badge cloning, MIFARE Classic dumping). Use them only where
-you are authorised to. The base `iNFC` app has none of this.
+**Proof of concept / work in progress.** This is a hobby project, shared **as is**
+with **no warranty** of any kind (see the GPLv3). It may be incomplete, rough
+around the edges, or change without notice — use it at your own risk.
+
+The base **iNFC** app is a read/identify/emulate tool: it reads its own tags,
+serves NDEF over host card emulation, and never polls in the background. It does
+not crack or defeat anything.
+
+The **uv** variant is different. Its Proxmark features are **dual-use
+security-research tooling** — badge cloning, MIFARE Classic default-key dumping,
+tag emulation. **How you use them is your responsibility**: only on **your own**
+hardware and cards, or where you have **permission**. That is also why only the
+base app is offered as a downloadable release — the uv variant is source-only.
 
 ## License
 
