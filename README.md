@@ -12,7 +12,7 @@ stays quiet until you explicitly pull down and choose *Read*.
 
 |  |  |  |  |
 |---|---|---|---|
-| ![Read](docs/screenshots/read.png) | ![Card info](docs/screenshots/payment.png) | ![Ultraviolence](docs/screenshots/ultraviolence.png) | ![Ultraviolence locked](docs/screenshots/ultraviolence-locked.png) |
+| ![Read](docs/screenshots/read.png) | ![Card info](docs/screenshots/payment.png) | ![Ultraviolence locked](docs/screenshots/ultraviolence-locked.png) | ![Ultraviolence](docs/screenshots/ultraviolence.png) |
 
 *(Screenshots use example/pseudo data — no real cards.)*
 
