@@ -1,0 +1,52 @@
+# C++ objects and libs
+*.slo
+*.lo
+*.o
+*.a
+*.la
+*.lai
+*.so
+*.dll
+*.dylib
+
+# Qt / qmake
+/.qmake.cache
+/.qmake.stash
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.moc
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+Makefile*
+*-build-*
+documentation.list
+
+# Compiled translations (generated from the .ts files)
+translations/*.qm
+
+# Built binaries (qmake TARGET lands in the project root)
+/harbour-infc
+/harbour-infc-uv
+
+# SDK / packaging output
+/RPMS/
+/installroot/
+/.mb2/
+
+# QtCreator
+*.autosave
+*.qmlproject.user
+*.qmlproject.user.*
+
+# Local notes, session data and other private bits - never publish
+.claude/
+CLAUDE.md
+CLAUDE-CONTINUE.md
+*.local.sh
+
+# Personal sound source (the shipped asset is data/explosion.wav)
+explosion.mp3

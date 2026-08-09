@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=harbour-infc-uv
+Exec=harbour-infc-uv
+Name=iNFC uv
+Comment=NFC plus external hardware (Proxmark 3)
+
+[X-Sailjail]
+OrganizationName=org.infcuv
+ApplicationName=infcuv
+Permissions=NFC;Internet;UserDirs;Audio

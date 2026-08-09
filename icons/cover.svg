@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cover watermark: a corner of the card cropped by the tile edge, the antenna
+  running outside the card body, the chip, and the signal leaving the top
+  right. Same neon orange as the icon, but laid behind the cover text at low
+  opacity - hinted, not illustrated.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="orange" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#ffc266"/>
+      <stop offset="0.5" stop-color="#ff8a00"/>
+      <stop offset="1"   stop-color="#ff6a00"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="b1"/>
+      <feFlood flood-color="#ff7a00" flood-opacity="0.9" result="c1"/>
+      <feComposite in="c1" in2="b1" operator="in" result="g1"/>
+      <feMerge>
+        <feMergeNode in="g1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#glow)" fill="none" stroke="url(#orange)" stroke-width="13"
+     stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- card corner, running off the bottom left of the tile -->
+    <path d="M -40 440 V 152 A 26 26 0 0 1 -14 126 H 298 A 26 26 0 0 1 324 152 V 440"/>
+
+    <!-- antenna, deliberately outside the card outline -->
+    <rect x="-70" y="98" width="424" height="366" rx="34"/>
+    <rect x="-30" y="142" width="344" height="322" rx="26"/>
+
+    <!-- chip -->
+    <rect x="44" y="198" width="92" height="72" rx="12"/>
+    <path d="M 44 222 H 136"/>
+    <path d="M 44 246 H 136"/>
+    <path d="M 90 198 V 270"/>
+
+    <!-- signal leaving the top right corner -->
+    <path d="M 340 120 A 58 58 0 0 1 382 171"/>
+    <path d="M 350 76  A 100 100 0 0 1 426 164"/>
+    <path d="M 360 32  A 142 142 0 0 1 470 157"/>
+  </g>
+</svg>
