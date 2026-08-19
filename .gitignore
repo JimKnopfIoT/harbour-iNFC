@@ -28,6 +28,10 @@ documentation.list
 # Compiled translations (generated from the .ts files)
 translations/*.qm
 
+# lupdate may emit a non-<lang> .ts for the target; keep only the *-de.ts sources
+translations/*.ts
+!translations/*-de.ts
+
 # Built binaries (qmake TARGET lands in the project root)
 /harbour-infc
 /harbour-infc-um
@@ -48,8 +52,6 @@ CLAUDE.md
 CLAUDE-CONTINUE.md
 *.local.sh
 
-# Personal sound source (the shipped asset is data/explosion.wav)
-explosion.mp3
 
 # Icon design sources / reference material (local only)
 /media/

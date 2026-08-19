@@ -3,7 +3,6 @@
 #include "nfcbackend.h"
 #ifdef UM_BUILD
 #  include "proxmark.h"
-#  include "sfx.h"
 #endif
 
 #include <sailfishapp.h>
@@ -42,9 +41,7 @@ int main(int argc, char* argv[])
 
 #ifdef UM_BUILD
     Proxmark proxmark;
-    Sfx sfx;
     ctx->setContextProperty(QStringLiteral("Proxmark"), &proxmark);
-    ctx->setContextProperty(QStringLiteral("Sfx"), &sfx);
     ctx->setContextProperty(QStringLiteral("umBuild"), true);
 #else
     ctx->setContextProperty(QStringLiteral("umBuild"), false);

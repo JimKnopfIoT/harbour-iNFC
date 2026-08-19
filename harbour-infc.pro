@@ -85,10 +85,8 @@ INSTALLS += assets
 
 # ---- um-only additions ---------------------------------------------------
 CONFIG(um) {
-    LIBS += -lpulse-simple -lpulse
-
-    HEADERS += src/proxmark.h src/sfx.h
-    SOURCES += src/proxmark.cpp src/sfx.cpp
+    HEADERS += src/proxmark.h
+    SOURCES += src/proxmark.cpp
 
     qml_um_root.path = /usr/share/$${TARGET}/qml
     qml_um_root.files = qml/UmHooks.qml
@@ -97,7 +95,7 @@ CONFIG(um) {
     qml_um_panels.files = qml/panels/UltimatePanel.qml
 
     umassets.path = /usr/share/$${TARGET}
-    umassets.files = data/pm3.png data/pm5.png data/glow-green.png data/explosion.wav
+    umassets.files = data/pm3.png data/pm5.png data/glow-green.png
 
     INSTALLS += qml_um_root qml_um_panels umassets
 }

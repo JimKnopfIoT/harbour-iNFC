@@ -139,7 +139,7 @@ SilicaFlickable {
             // Two device silhouettes are the entry buttons. Tapping either
             // one crosses into Ultimate Mode. The Proxmark 3 Easy is the
             // device iNFC drives today; the Proxmark 5 is the next one we are
-            // bringing in - shown, but marked "soon".
+            // bringing in.
             Row {
                 anchors.horizontalCenter: parent.horizontalCenter
                 spacing: Theme.paddingLarge
@@ -167,10 +167,7 @@ SilicaFlickable {
                             MouseArea {
                                 id: tap
                                 anchors.fill: parent
-                                onClicked: {
-                                    Sfx.play(appShareDir + "/explosion.wav")
-                                    app.umUnlocked = true
-                                }
+                                onClicked: app.umUnlocked = true
                             }
                         }
 
