@@ -1,5 +1,5 @@
 /*
- * iNFC - Ultraviolence mode: the Proxmark 3.
+ * iNFC - Ultimate Mode: the Proxmark.
  *
  * Everything the phone's own radio cannot do lives here, because it needs
  * external hardware: 125 kHz LF, MIFARE Classic with Crypto1, sniffing.

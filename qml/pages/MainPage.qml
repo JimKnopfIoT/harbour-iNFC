@@ -23,8 +23,8 @@ Page {
         anchors.fill: parent
         clip: true
 
-        // The Log panel's index, so navigation works whether or not the uv
-        // Ultraviolence panel is present (it shifts Log and Archive by one).
+        // The Log panel's index, so navigation works whether or not the um
+        // Ultimate Mode panel is present (it shifts Log and Archive by one).
         property int logIndex: 0
 
         // Three delegates alive at a time: the current panel and its two
@@ -50,8 +50,8 @@ Page {
             }
         }
 
-        // Built at load: the base panels always, the Ultraviolence panel only
-        // in the uv build. The first eight indices (Read..Emulate) are the
+        // Built at load: the base panels always, the Ultimate Mode panel only
+        // in the um build. The first eight indices (Read..Emulate) are the
         // same in both, so Nfc.kindPanel jumps stay valid.
         model: ListModel { id: panelModel }
 
@@ -60,7 +60,7 @@ Page {
                 "EidPanel.qml", "PaymentPanel.qml", "TransponderPanel.qml",
                 "OtherPanel.qml", "EmulatePanel.qml"]
             for (var i = 0; i < base.length; i++) panelModel.append({ src: base[i] })
-            if (uvBuild) panelModel.append({ src: "UltraviolencePanel.qml" })
+            if (umBuild) panelModel.append({ src: "UltimatePanel.qml" })
             carousel.logIndex = panelModel.count
             panelModel.append({ src: "LogPanel.qml" })
             panelModel.append({ src: "ArchivePanel.qml" })

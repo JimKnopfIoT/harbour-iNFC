@@ -63,7 +63,7 @@ public:
         PanelTransponder = 5,
         PanelOther        = 6,
         PanelEmulate      = 7,
-        PanelUltraviolence = 8,
+        PanelUltimate      = 8,
         PanelLog          = 9,
         PanelArchive      = 10
     };

@@ -27,10 +27,10 @@ static void playPcm(QByteArray pcm)
     // Target the primary output by name; fall back to the default sink if that
     // name is ever absent (e.g. a different audio route).
     pa_simple* s = pa_simple_new(Q_NULLPTR, "harbour-infc", PA_STREAM_PLAYBACK,
-        "sink.primary_output", "ultraviolence", &ss, Q_NULLPTR, Q_NULLPTR, &err);
+        "sink.primary_output", "ultimate", &ss, Q_NULLPTR, Q_NULLPTR, &err);
     if (!s) {
         s = pa_simple_new(Q_NULLPTR, "harbour-infc", PA_STREAM_PLAYBACK,
-            Q_NULLPTR, "ultraviolence", &ss, Q_NULLPTR, Q_NULLPTR, &err);
+            Q_NULLPTR, "ultimate", &ss, Q_NULLPTR, Q_NULLPTR, &err);
     }
     if (!s) {
         qWarning() << "[sfx] pa_simple_new failed:" << pa_strerror(err);
