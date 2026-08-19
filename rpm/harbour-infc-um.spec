@@ -1,5 +1,5 @@
 #
-# um variant: harbour-infc plus external hardware (Proxmark) and sound.
+# um variant: harbour-infc plus external hardware (Proxmark).
 # Built from the same source tree with CONFIG+=um.
 #
 

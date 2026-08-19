@@ -32,8 +32,8 @@ interesting it is. On a payment-card page, for instance, nothing is ever green.
 
 | Variant | Package | What it is |
 |---|---|---|
-| **iNFC** | `harbour-infc` | The base app. NFC only. No external hardware, no sound. Publishable. |
-| **iNFC um** | `harbour-infc-um` | Everything in the base app **plus** Proxmark support (the "Ultimate Mode" page) and a sound cue. |
+| **iNFC** | `harbour-infc` | The base app. NFC only. No external hardware. Publishable. |
+| **iNFC um** | `harbour-infc-um` | Everything in the base app **plus** Proxmark support (the "Ultimate Mode" page). |
 
 They install side by side as two separate apps with separate archives. Only
 the base app is offered as a downloadable release binary; the `um` variant is
@@ -79,8 +79,8 @@ mb2 -t <target> --specfile rpm/harbour-infc-um.spec build
 ```
 
 The split is a single `CONFIG+=um` switch in `harbour-infc.pro`: it changes the
-target, adds the Proxmark/sound sources, links libpulse, and installs the
-um-only QML and assets. The base build carries none of it.
+target, adds the Proxmark sources and installs the um-only QML and assets.
+The base build carries none of it.
 
 ## Status & responsible use
 

@@ -1,6 +1,6 @@
 # Two variants from one source tree:
 #   default        -> harbour-infc      (base app, NFC only, publishable)
-#   CONFIG+=um     -> harbour-infc-um   (adds Proxmark, sound, Ultimate Mode)
+#   CONFIG+=um     -> harbour-infc-um   (adds Proxmark, Ultimate Mode)
 #
 # The um build is selected by its own rpm spec, which runs qmake with
 # CONFIG+=um. Everything below branches on that.
