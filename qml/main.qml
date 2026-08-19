@@ -54,7 +54,7 @@ ApplicationWindow {
         onLastEventChanged: app.log("HCE: " + Emulator.lastEvent)
     }
 
-    // Everything that touches external hardware (Proxmark, sound) lives in
+    // Everything that touches external hardware (the Proxmark) lives in
     // the um build only. Loading it through a guard keeps the base app free
     // of any reference to objects it does not have.
     Loader {

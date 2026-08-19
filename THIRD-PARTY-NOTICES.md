@@ -8,11 +8,11 @@ it builds on the following external work and public specifications.
 * **nfcd** — the SailfishOS NFC daemon by Slava Monich / Jolla. iNFC is a
   D-Bus client of its `org.sailfishos.nfc.*` interfaces.
   <https://github.com/sailfishos/nfcd>
-* **SailfishOS**, Silica UI, and PulseAudio (via `libpulse-simple`, uv variant).
+* **SailfishOS** and its Silica UI.
 
 ## Protocols and reference material (no code copied)
 
-* **Proxmark 3 / Iceman firmware** (RfidResearchGroup) — the `uv` variant
+* **Proxmark 3 / Iceman firmware** (RfidResearchGroup) — the `um` variant
   speaks the Proxmark wire protocol directly. Command ids and frame layout were
   taken from the public headers (`pm3_cmd.h`, `mifare.h`) and client sources;
   no Proxmark code is included. GPLv3.
