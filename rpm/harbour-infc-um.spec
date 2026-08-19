@@ -1,9 +1,9 @@
 #
-# uv variant: harbour-infc plus external hardware (Proxmark 3) and sound.
-# Built from the same source tree with CONFIG+=uv.
+# um variant: harbour-infc plus external hardware (Proxmark) and sound.
+# Built from the same source tree with CONFIG+=um.
 #
 
-Name:       harbour-infc-uv
+Name:       harbour-infc-um
 
 # >> macros
 %define _buildhost localhost
@@ -13,7 +13,7 @@ Name:       harbour-infc-uv
 %{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
-Summary:    NFC reader, writer, emulator plus Proxmark 3
+Summary:    NFC reader, writer, emulator plus Proxmark
 Version:    0.1.0
 Release:    1
 Group:      Qt/Qt
@@ -32,7 +32,7 @@ BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  desktop-file-utils
 
 %description
-iNFC uv is the base iNFC app plus support for external hardware: a Proxmark 3
+iNFC um is the base iNFC app plus support for external hardware: a Proxmark
 over USB for the frequencies and cards the phone cannot reach on its own
 (125 kHz LF, MIFARE Classic). The base iNFC app has none of this.
 
@@ -40,7 +40,7 @@ over USB for the frequencies and cards the phone cannot reach on its own
 %setup -q -n %{name}-%{version}
 
 %build
-%qtc_qmake5 CONFIG+=uv
+%qtc_qmake5 CONFIG+=um
 
 %qtc_make %{?_smp_mflags}
 

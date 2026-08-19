@@ -1,7 +1,7 @@
 #include "cardstore.h"
 #include "emulator.h"
 #include "nfcbackend.h"
-#ifdef UV_BUILD
+#ifdef UM_BUILD
 #  include "proxmark.h"
 #  include "sfx.h"
 #endif
@@ -14,7 +14,7 @@
 #include <QQuickView>
 #include <QScopedPointer>
 
-// APP_TARGET is passed in from the .pro (harbour-infc or harbour-infc-uv) so
+// APP_TARGET is passed in from the .pro (harbour-infc or harbour-infc-um) so
 // storage, share paths and window all follow the built variant.
 #ifndef APP_TARGET
 #  define APP_TARGET "harbour-infc"
@@ -40,14 +40,14 @@ int main(int argc, char* argv[])
     ctx->setContextProperty(QStringLiteral("appShareDir"),
         QStringLiteral("/usr/share/") + app->applicationName());
 
-#ifdef UV_BUILD
+#ifdef UM_BUILD
     Proxmark proxmark;
     Sfx sfx;
     ctx->setContextProperty(QStringLiteral("Proxmark"), &proxmark);
     ctx->setContextProperty(QStringLiteral("Sfx"), &sfx);
-    ctx->setContextProperty(QStringLiteral("uvBuild"), true);
+    ctx->setContextProperty(QStringLiteral("umBuild"), true);
 #else
-    ctx->setContextProperty(QStringLiteral("uvBuild"), false);
+    ctx->setContextProperty(QStringLiteral("umBuild"), false);
 #endif
 
     // One shared entry QML for both variants (decoupled from TARGET name).

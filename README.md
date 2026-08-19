@@ -1,7 +1,7 @@
 # iNFC
 
 A native NFC app for **SailfishOS** that reads, identifies, stores and
-emulates NFC tags and smart cards — and, in its `uv` variant, drives an
+emulates NFC tags and smart cards — and, in its `um` variant, drives an
 external **Proxmark 3** for the frequencies and cards the phone cannot reach
 on its own.
 
@@ -12,7 +12,7 @@ stays quiet until you explicitly pull down and choose *Read*.
 
 |  |  |  |  |
 |---|---|---|---|
-| ![Read](docs/screenshots/read.png) | ![Card info](docs/screenshots/payment.png) | ![Ultraviolence locked](docs/screenshots/ultraviolence-locked.png) | ![Ultraviolence](docs/screenshots/ultraviolence.png) |
+| ![Read](docs/screenshots/read.png) | ![Card info](docs/screenshots/payment.png) | ![Ultimate Mode entry](docs/screenshots/ultimate-locked.png) | ![Ultimate Mode results](docs/screenshots/ultimate.png) |
 
 *(Screenshots use example/pseudo data — no real cards.)*
 
@@ -33,10 +33,10 @@ interesting it is. On a payment-card page, for instance, nothing is ever green.
 | Variant | Package | What it is |
 |---|---|---|
 | **iNFC** | `harbour-infc` | The base app. NFC only. No external hardware, no sound. Publishable. |
-| **iNFC uv** | `harbour-infc-uv` | Everything in the base app **plus** Proxmark 3 support (the "Ultraviolence" page) and a sound cue. |
+| **iNFC um** | `harbour-infc-um` | Everything in the base app **plus** Proxmark support (the "Ultimate Mode" page) and a sound cue. |
 
 They install side by side as two separate apps with separate archives. Only
-the base app is offered as a downloadable release binary; the `uv` variant is
+the base app is offered as a downloadable release binary; the `um` variant is
 source-only — build it yourself.
 
 ### Base app features
@@ -55,7 +55,7 @@ source-only — build it yourself.
 * A named, dated archive with separate comments, plus JSON export/import.
 * English UI with a full German translation.
 
-### uv-only additions (Proxmark 3 over USB)
+### um-only additions (Proxmark over USB)
 
 * **125 kHz LF badge search** — EM4100, HID Prox, IO Prox.
 * **T5577 writing** — clone an EM4100 id onto a blank T5577 (and a "Dolly"
@@ -74,13 +74,13 @@ their spec files — note that `--specfile` goes **before** `build`:
 # base app  -> harbour-infc
 mb2 -t <target> --specfile rpm/harbour-infc.spec build
 
-# uv variant -> harbour-infc-uv   (passes CONFIG+=uv to qmake)
-mb2 -t <target> --specfile rpm/harbour-infc-uv.spec build
+# um variant -> harbour-infc-um   (passes CONFIG+=um to qmake)
+mb2 -t <target> --specfile rpm/harbour-infc-um.spec build
 ```
 
-The split is a single `CONFIG+=uv` switch in `harbour-infc.pro`: it changes the
+The split is a single `CONFIG+=um` switch in `harbour-infc.pro`: it changes the
 target, adds the Proxmark/sound sources, links libpulse, and installs the
-uv-only QML and assets. The base build carries none of it.
+um-only QML and assets. The base build carries none of it.
 
 ## Status & responsible use
 
@@ -92,11 +92,11 @@ The base **iNFC** app is a read/identify/emulate tool: it reads its own tags,
 serves NDEF over host card emulation, and never polls in the background. It does
 not crack or defeat anything.
 
-The **uv** variant is different. Its Proxmark features are **dual-use
+The **um** variant is different. Its Proxmark features are **dual-use
 security-research tooling** — badge cloning, MIFARE Classic default-key dumping,
 tag emulation. **How you use them is your responsibility**: only on **your own**
 hardware and cards, or where you have **permission**. That is also why only the
-base app is offered as a downloadable release — the uv variant is source-only.
+base app is offered as a downloadable release — the um variant is source-only.
 
 ## License
 

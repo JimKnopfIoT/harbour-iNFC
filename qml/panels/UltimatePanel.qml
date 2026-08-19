@@ -3,7 +3,7 @@ import Sailfish.Silica 1.0
 import "../components"
 
 /*
- * Ultraviolence: the page where the phone stops and external hardware takes
+ * Ultimate Mode: the page where the phone stops and external hardware takes
  * over. Locked until you deliberately unlock it - not to gatekeep, but to
  * mark the boundary. Everything here needs a Proxmark on the USB port.
  */
@@ -14,6 +14,21 @@ SilicaFlickable {
 
     flickableDirection: Flickable.VerticalFlick
     contentHeight: column.height + Theme.paddingLarge * 3
+
+    // A soft green nebula radiating in from the upper-right - the PM3/Ultimate
+    // accent colour, echoing the harbour-pm5 backdrop. Pinned to the viewport
+    // (y tracks contentY) so it stays put while the content scrolls.
+    Image {
+        id: pageGlow
+        z: -1
+        source: appShareDir + "/glow-green.png"
+        width: panel.width * 1.5
+        height: width
+        x: panel.width - width * 0.62
+        y: panel.contentY - height * 0.30
+        opacity: 0.55
+        smooth: true
+    }
 
     // Build a card map from the last LF read so it can go into the archive
     // and exports, exactly like a phone read.
@@ -83,19 +98,19 @@ SilicaFlickable {
             onClicked: panel.carousel.currentIndex = panel.carousel.logIndex
         }
         MenuItem {
-            visible: app.uvUnlocked && Proxmark.hfUid.length > 0
+            visible: app.umUnlocked && Proxmark.hfUid.length > 0
             text: qsTr("Save HF card to archive")
             onClicked: pageStack.push(Qt.resolvedUrl("../pages/SaveDialog.qml"),
                 { cardMap: panel.hfCardMap() })
         }
         MenuItem {
-            visible: app.uvUnlocked && Proxmark.lastTag.length > 0
+            visible: app.umUnlocked && Proxmark.lastTag.length > 0
             text: qsTr("Save LF tag to archive")
             onClicked: pageStack.push(Qt.resolvedUrl("../pages/SaveDialog.qml"),
                 { cardMap: panel.lfCardMap() })
         }
         MenuItem {
-            visible: app.uvUnlocked
+            visible: app.umUnlocked
             text: Proxmark.connected ? qsTr("Disconnect") : qsTr("Connect")
             enabled: !Proxmark.busy
             onClicked: Proxmark.connected ? Proxmark.disconnect()
@@ -109,69 +124,74 @@ SilicaFlickable {
         spacing: Theme.paddingMedium
 
         PageHeader {
-            title: qsTr("Ultraviolence")
-            description: qsTr("Proxmark 3 · external hardware")
+            title: qsTr("Ultimate Mode")
+            description: qsTr("Proxmark · external hardware")
         }
 
-        // ---- Locked state ------------------------------------------------
+        // ---- Locked state (entry) ----------------------------------------
         Column {
             width: parent.width
             spacing: Theme.paddingLarge
-            visible: !app.uvUnlocked
+            visible: !app.umUnlocked
 
             Item { width: 1; height: Theme.paddingLarge }
 
-            // Weathered yellow radiation sign, almost the full width of the
-            // page - old, chipped, crumbling at the edges. It is the button:
-            // its centre pulses and carries "Enter".
-            Item {
-                id: sign
+            // Two device silhouettes are the entry buttons. Tapping either
+            // one crosses into Ultimate Mode. The Proxmark 3 Easy is the
+            // device iNFC drives today; the Proxmark 5 is the next one we are
+            // bringing in - shown, but marked "soon".
+            Row {
                 anchors.horizontalCenter: parent.horizontalCenter
-                width: panel.width - 2 * Theme.paddingLarge
-                height: width
+                spacing: Theme.paddingLarge
 
-                Image {
-                    anchors.fill: parent
-                    fillMode: Image.PreserveAspectFit
-                    smooth: true
-                    source: appShareDir + "/radiation.png"
-                }
+                // A single device tile: silhouette image + caption, tappable.
+                Component {
+                    id: deviceTile
+                    Column {
+                        property alias source: pic.source
+                        property string caption
+                        spacing: Theme.paddingSmall
 
-                // A dark disc over the trefoil's centre (radius 55 of 512).
-                // Pulsing its opacity makes the middle slowly breathe darker.
-                Rectangle {
-                    id: glow
-                    anchors.centerIn: parent
-                    width: sign.width * 0.235
-                    height: width
-                    radius: width / 2
-                    color: "#1c1500"
-                    SequentialAnimation on opacity {
-                        loops: Animation.Infinite
-                        running: !app.uvUnlocked
-                        NumberAnimation { from: 0.0; to: 0.55; duration: 2600
-                                          easing.type: Easing.InOutSine }
-                        NumberAnimation { from: 0.55; to: 0.0; duration: 2600
-                                          easing.type: Easing.InOutSine }
+                        Image {
+                            id: pic
+                            width: (panel.width - 3 * Theme.paddingLarge) / 2
+                            height: width
+                            fillMode: Image.PreserveAspectFit
+                            smooth: true
+
+                            // A small press feedback so the silhouette reads
+                            // as a button.
+                            scale: tap.pressed ? 0.94 : 1.0
+                            Behavior on scale { NumberAnimation { duration: 90 } }
+
+                            MouseArea {
+                                id: tap
+                                anchors.fill: parent
+                                onClicked: {
+                                    Sfx.play(appShareDir + "/explosion.wav")
+                                    app.umUnlocked = true
+                                }
+                            }
+                        }
+
+                        Label {
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            text: caption
+                            color: Theme.primaryColor
+                            font.pixelSize: Theme.fontSizeMedium
+                        }
                     }
                 }
 
-                Label {
-                    anchors.centerIn: parent
-                    text: qsTr("Enter")
-                    // Light, so it stays readable as the centre darkens under
-                    // the pulse.
-                    color: "#fff3c4"
-                    font.bold: true
-                    font.pixelSize: Theme.fontSizeLarge
+                Loader {
+                    sourceComponent: deviceTile
+                    onLoaded: { item.source = appShareDir + "/pm3.png"
+                                item.caption = qsTr("PM3 Easy") }
                 }
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        Sfx.play(appShareDir + "/explosion.wav")
-                        app.uvUnlocked = true
-                    }
+                Loader {
+                    sourceComponent: deviceTile
+                    onLoaded: { item.source = appShareDir + "/pm5.png"
+                                item.caption = qsTr("Proxmark 5") }
                 }
             }
 
@@ -180,7 +200,17 @@ SilicaFlickable {
                 width: parent.width - 2 * Theme.horizontalPageMargin
                 wrapMode: Text.Wrap
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTr("Beyond this point nothing runs on the phone alone. This is where a Proxmark 3 reads the frequencies and cards the phone cannot: 125 kHz, MIFARE Classic, and more.")
+                text: qsTr("Tap a device to enter")
+                color: Theme.secondaryColor
+                font.pixelSize: Theme.fontSizeSmall
+            }
+
+            Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2 * Theme.horizontalPageMargin
+                wrapMode: Text.Wrap
+                horizontalAlignment: Text.AlignHCenter
+                text: qsTr("Beyond this point nothing runs on the phone alone. This is where a Proxmark reads the frequencies and cards the phone cannot: 125 kHz, MIFARE Classic, and more.")
                 color: Theme.secondaryColor
                 font.pixelSize: Theme.fontSizeSmall
             }
@@ -191,7 +221,7 @@ SilicaFlickable {
         Column {
             width: parent.width
             spacing: Theme.paddingMedium
-            visible: app.uvUnlocked
+            visible: app.umUnlocked
 
             SectionHeader { text: qsTr("Device") }
 

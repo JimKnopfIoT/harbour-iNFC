@@ -26,10 +26,10 @@ ApplicationWindow {
     // Id of the entry the Comment dialog will attach to.
     property string lastSavedId: ""
 
-    // Ultraviolence is unlocked per session, on purpose: you reach for it
-    // deliberately, and a restart puts the guard back. Only the uv build has
-    // the page at all; uvBuild is a context property from C++.
-    property bool uvUnlocked: false
+    // Ultimate Mode is unlocked per session, on purpose: you reach for it
+    // deliberately, and a restart puts the guard back. Only the um build has
+    // the page at all; umBuild is a context property from C++.
+    property bool umUnlocked: false
 
     function log(line) {
         var now = Qt.formatTime(new Date(), "hh:mm:ss")
@@ -55,10 +55,10 @@ ApplicationWindow {
     }
 
     // Everything that touches external hardware (Proxmark, sound) lives in
-    // the uv build only. Loading it through a guard keeps the base app free
+    // the um build only. Loading it through a guard keeps the base app free
     // of any reference to objects it does not have.
     Loader {
-        active: uvBuild
-        source: uvBuild ? Qt.resolvedUrl("UvHooks.qml") : ""
+        active: umBuild
+        source: umBuild ? Qt.resolvedUrl("UmHooks.qml") : ""
     }
 }

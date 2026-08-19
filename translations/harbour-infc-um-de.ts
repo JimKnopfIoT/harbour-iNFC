@@ -1748,7 +1748,7 @@
     </message>
 </context>
 <context>
-    <name>UltraviolencePanel</name>
+    <name>UltimatePanel</name>
     <message>
         <source>Log</source>
         <translation>Protokoll</translation>
@@ -1762,16 +1762,16 @@
         <translation>Verbinden</translation>
     </message>
     <message>
-        <source>Ultraviolence</source>
-        <translation>Ultraviolence</translation>
+        <source>Ultimate Mode</source>
+        <translation>Ultimate Mode</translation>
     </message>
     <message>
-        <source>Proxmark 3 · external hardware</source>
-        <translation>Proxmark 3 · externe Hardware</translation>
+        <source>Proxmark · external hardware</source>
+        <translation>Proxmark · externe Hardware</translation>
     </message>
     <message>
-        <source>Beyond this point nothing runs on the phone alone. This is where a Proxmark 3 reads the frequencies and cards the phone cannot: 125 kHz, MIFARE Classic, and more.</source>
-        <translation>Ab hier läuft nichts mehr allein auf dem Telefon. Hier liest ein Proxmark 3 die Frequenzen und Karten, die das Telefon nicht kann: 125 kHz, MIFARE Classic und mehr.</translation>
+        <source>Beyond this point nothing runs on the phone alone. This is where a Proxmark reads the frequencies and cards the phone cannot: 125 kHz, MIFARE Classic, and more.</source>
+        <translation>Ab hier läuft nichts mehr allein auf dem Telefon. Hier liest ein Proxmark die Frequenzen und Karten, die das Telefon nicht kann: 125 kHz, MIFARE Classic und mehr.</translation>
     </message>
     <message>
         <source>Device</source>
@@ -1830,8 +1830,16 @@
         <translation>Proxmark · 125 kHz</translation>
     </message>
     <message>
-        <source>Enter</source>
-        <translation>Enter</translation>
+        <source>Tap a device to enter</source>
+        <translation>Zum Öffnen ein Gerät antippen</translation>
+    </message>
+    <message>
+        <source>PM3 Easy</source>
+        <translation>PM3 Easy</translation>
+    </message>
+    <message>
+        <source>Proxmark 5</source>
+        <translation>Proxmark 5</translation>
     </message>
     <message>
         <source> (125 kHz)</source>

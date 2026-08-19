@@ -30,7 +30,7 @@ translations/*.qm
 
 # Built binaries (qmake TARGET lands in the project root)
 /harbour-infc
-/harbour-infc-uv
+/harbour-infc-um
 
 # SDK / packaging output
 /RPMS/

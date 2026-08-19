@@ -20,8 +20,8 @@ CardStore::CardStore(QObject* parent) :
 
 QString CardStore::storagePath() const
 {
-    // Keyed on the application name so the base app and the uv build keep
-    // separate archives (harbour-infc vs harbour-infc-uv).
+    // Keyed on the application name so the base app and the um build keep
+    // separate archives (harbour-infc vs harbour-infc-um).
     return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
         + QLatin1Char('/') + QCoreApplication::applicationName();
 }

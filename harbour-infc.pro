@@ -1,13 +1,13 @@
 # Two variants from one source tree:
 #   default        -> harbour-infc      (base app, NFC only, publishable)
-#   CONFIG+=uv     -> harbour-infc-uv   (adds Proxmark, sound, Ultraviolence)
+#   CONFIG+=um     -> harbour-infc-um   (adds Proxmark, sound, Ultimate Mode)
 #
-# The uv build is selected by its own rpm spec, which runs qmake with
-# CONFIG+=uv. Everything below branches on that.
+# The um build is selected by its own rpm spec, which runs qmake with
+# CONFIG+=um. Everything below branches on that.
 
-CONFIG(uv) {
-    TARGET = harbour-infc-uv
-    DEFINES += UV_BUILD
+CONFIG(um) {
+    TARGET = harbour-infc-um
+    DEFINES += UM_BUILD
 } else {
     TARGET = harbour-infc
 }
@@ -16,7 +16,7 @@ DEFINES += "APP_TARGET=\\\"$${TARGET}\\\""
 CONFIG += sailfishapp
 CONFIG += sailfishapp_i18n
 # We install the QML ourselves (per variant) instead of shipping the whole
-# tree, so the base app never carries the uv-only files.
+# tree, so the base app never carries the um-only files.
 CONFIG += sailfishapp_no_deploy_qml
 
 QT += dbus network
@@ -83,23 +83,23 @@ assets.path = /usr/share/$${TARGET}
 assets.files = data/cover.png
 INSTALLS += assets
 
-# ---- uv-only additions ---------------------------------------------------
-CONFIG(uv) {
+# ---- um-only additions ---------------------------------------------------
+CONFIG(um) {
     LIBS += -lpulse-simple -lpulse
 
     HEADERS += src/proxmark.h src/sfx.h
     SOURCES += src/proxmark.cpp src/sfx.cpp
 
-    qml_uv_root.path = /usr/share/$${TARGET}/qml
-    qml_uv_root.files = qml/UvHooks.qml
+    qml_um_root.path = /usr/share/$${TARGET}/qml
+    qml_um_root.files = qml/UmHooks.qml
 
-    qml_uv_panels.path = /usr/share/$${TARGET}/qml/panels
-    qml_uv_panels.files = qml/panels/UltraviolencePanel.qml
+    qml_um_panels.path = /usr/share/$${TARGET}/qml/panels
+    qml_um_panels.files = qml/panels/UltimatePanel.qml
 
-    uvassets.path = /usr/share/$${TARGET}
-    uvassets.files = data/radiation.png data/explosion.wav
+    umassets.path = /usr/share/$${TARGET}
+    umassets.files = data/pm3.png data/pm5.png data/glow-green.png data/explosion.wav
 
-    INSTALLS += qml_uv_root qml_uv_panels uvassets
+    INSTALLS += qml_um_root qml_um_panels umassets
 }
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172 256x256
