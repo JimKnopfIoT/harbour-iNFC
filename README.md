@@ -98,6 +98,8 @@ tag emulation. **How you use them is your responsibility**: only on **your own**
 hardware and cards, or where you have **permission**. That is also why only the
 base app is offered as a downloadable release — the um variant is source-only.
 
+AI assisted development
+
 ## License
 
 GPLv3. See [LICENSE](LICENSE) and [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
